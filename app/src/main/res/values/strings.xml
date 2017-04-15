@@ -34,4 +34,10 @@
     <string name="add_new_stock_item_button">add a new stock item button</string>
     <string name="text_stock_item_to_search">text stock item to search</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="stock_name_for_intent">stock_name</string>
+    <string name="stock_history_for_intent">stock_history</string>
+    <string name="label_history">%s prize</string>
+
 </resources>
