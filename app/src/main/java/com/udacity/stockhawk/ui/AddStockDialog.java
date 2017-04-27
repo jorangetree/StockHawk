@@ -14,8 +14,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.udacity.stockhawk.R;
+import com.udacity.stockhawk.task.StockSymbolCheckTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,12 +68,27 @@ public class AddStockDialog extends DialogFragment {
     }
 
     private void addStock() {
-        Activity parent = getActivity();
-        if (parent instanceof MainActivity) {
-            ((MainActivity) parent).addStock(stock.getText().toString());
-        }
+        final Activity parent = getActivity();
+        final String symbol = stock.getText().toString();
+        StockSymbolCheckTask task = new StockSymbolCheckTask(parent.getApplicationContext()) {
+            @Override
+            protected void onPostExecute(StockStatus symbolStatus) {
+                super.onPostExecute(symbolStatus);
+                if (symbolStatus == StockStatus.SYMBOL_FOUND) {
+                    if (parent instanceof MainActivity) {
+                        ((MainActivity) parent).addStock(symbol);
+                    }
+                } if (symbolStatus == StockStatus.SYMBOL_NOT_FOUND) {
+                    String message = parent.getString(R.string.toast_stock_not_found, symbol);
+                    Toast.makeText(parent, message, Toast.LENGTH_LONG).show();
+                } else {
+                    String message = parent.getString(R.string.error_no_network);
+                    Toast.makeText(parent, message, Toast.LENGTH_LONG).show();
+                }
+            }
+        };
+        task.execute(symbol);
+
         dismissAllowingStateLoss();
     }
-
-
 }
