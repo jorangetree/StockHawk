@@ -31,14 +31,10 @@ public class StockHistoryActivity extends AppCompatActivity {
         String stockHistory = extras.getString(getResources().getString(R.string.stock_history_for_intent));
 
         List<Entry> entries = new ArrayList<>();
-        int count = 0;
         for (String line: stockHistory.split("\n")) {
-            if (count % 5 == 0) {
-                String[] lineSplit = line.split(",");
-                entries.add(new Entry(Long.parseLong(lineSplit[0]),
-                        Float.parseFloat(lineSplit[1])));
-            }
-            count++;
+            String[] lineSplit = line.split(",");
+            entries.add(new Entry(Long.parseLong(lineSplit[0]),
+                    Float.parseFloat(lineSplit[1])));
         }
 
         Collections.sort(entries, new Comparator<Entry>() {
