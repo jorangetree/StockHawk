@@ -78,7 +78,7 @@ public class AddStockDialog extends DialogFragment {
                     if (parent instanceof MainActivity) {
                         ((MainActivity) parent).addStock(symbol);
                     }
-                } if (symbolStatus == StockStatus.SYMBOL_NOT_FOUND) {
+                } else if (symbolStatus == StockStatus.SYMBOL_NOT_FOUND) {
                     String message = parent.getString(R.string.toast_stock_not_found, symbol);
                     Toast.makeText(parent, message, Toast.LENGTH_LONG).show();
                 } else {

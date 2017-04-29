@@ -2,11 +2,6 @@ package com.udacity.stockhawk.task;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.Toast;
-
-import com.udacity.stockhawk.R;
 
 import java.io.IOException;
 

@@ -11,11 +11,10 @@ import android.widget.TextView;
 
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
+import com.udacity.stockhawk.data.DataRepresentationFormat;
 import com.udacity.stockhawk.data.PrefUtils;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,13 +32,9 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
         this.context = context;
         this.clickHandler = clickHandler;
 
-        dollarFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);
-        dollarFormatWithPlus = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);
-        dollarFormatWithPlus.setPositivePrefix("+$");
-        percentageFormat = (DecimalFormat) NumberFormat.getPercentInstance(Locale.getDefault());
-        percentageFormat.setMaximumFractionDigits(2);
-        percentageFormat.setMinimumFractionDigits(2);
-        percentageFormat.setPositivePrefix("+");
+        dollarFormat = DataRepresentationFormat.dollarFormat();
+        dollarFormatWithPlus = DataRepresentationFormat.dollarFormatWithPlus();
+        percentageFormat = DataRepresentationFormat.percentageFormat();
     }
 
     void setCursor(Cursor cursor) {
