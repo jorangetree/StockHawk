@@ -31,6 +31,8 @@ public class StockSymbolCheckTask extends AsyncTask<String, Integer, StockSymbol
             }
         } catch (IOException e) {
             return StockStatus.NETWORK_OR_SERVICE_PROBLEM;
+        } catch (StringIndexOutOfBoundsException e) {
+            return StockStatus.SYMBOL_NOT_FOUND;
         }
     }
 }
