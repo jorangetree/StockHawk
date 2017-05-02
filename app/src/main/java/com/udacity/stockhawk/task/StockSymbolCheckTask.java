@@ -11,7 +11,7 @@ import yahoofinance.YahooFinance;
 
 public class StockSymbolCheckTask extends AsyncTask<String, Integer, StockSymbolCheckTask.StockStatus> {
 
-    public enum StockStatus {SYMBOL_FOUND, SYMBOL_NOT_FOUND, NETWORK_OR_SERVICE_PROBLEM};
+    public enum StockStatus {SYMBOL_FOUND, SYMBOL_NOT_FOUND, NETWORK_OR_SERVICE_PROBLEM}
 
     private final Context mContext;
 

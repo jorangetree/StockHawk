@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -31,7 +30,7 @@ public class StockHistoryActivity extends AppCompatActivity {
         String stockHistory = extras.getString(getResources().getString(R.string.stock_history_for_intent));
 
         List<Entry> entries = new ArrayList<>();
-        for (String line: stockHistory.split("\n")) {
+        for (String line: stockHistory != null ? stockHistory.split("\n") : new String[0]) {
             String[] lineSplit = line.split(",");
             entries.add(new Entry(Long.parseLong(lineSplit[0]),
                     Float.parseFloat(lineSplit[1])));

@@ -51,7 +51,7 @@ public class StockHawkInfoWidget extends AppWidgetProvider {
                     context.getContentResolver().query(Contract.Quote.makeUriForStock(symbol),
                             null, null, null, null);
 
-            if (cursor.getCount() > 0) {
+            if ((cursor != null) && (cursor.getCount() > 0)) {
                 cursor.moveToFirst();
                 RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
                         R.layout.list_item_quote);
@@ -68,6 +68,7 @@ public class StockHawkInfoWidget extends AppWidgetProvider {
                 DecimalFormat percentageFormat = DataRepresentationFormat.percentageFormat();
                 remoteViews.setTextViewText(R.id.change, percentageFormat.format(percentageChange / 100.0));
                 appWidgetManager.updateAppWidget(widgetId, remoteViews);
+                cursor.close();
             }
         }
     }
