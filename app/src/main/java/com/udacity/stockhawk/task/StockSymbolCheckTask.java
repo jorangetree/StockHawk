@@ -23,7 +23,7 @@ public class StockSymbolCheckTask extends AsyncTask<String, Integer, StockSymbol
         String symbol = params[0];
         try {
             Stock stock = YahooFinance.get(symbol);
-            if (stock.getName() != null) {
+            if ((stock != null) && (stock.getName() != null)) {
                 return StockStatus.SYMBOL_FOUND;
             }
             else {
