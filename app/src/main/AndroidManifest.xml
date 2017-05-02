@@ -22,10 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.WidgetSettingsActivity">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
 
@@ -46,7 +45,7 @@
 
         <activity android:name=".ui.StockHistoryActivity" />
 
-        <receiver android:name=".StockHawkWidget">
+        <receiver android:name=".ui.widget.StockHawkInfoWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.udacity.stockhawk.ACTION_DATA_UPDATED" />
@@ -54,8 +53,24 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/sock_hawk_widget_info" />
+                android:resource="@xml/stock_hawk_info_widget_info" />
         </receiver>
+        <receiver android:name=".ui.widget.StockHawkCollectionWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.udacity.stockhawk.ACTION_DATA_UPDATED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/stock_hawk_collection_widget_info" />
+        </receiver>
+
+        <service
+            android:name=".ui.widget.CollectionWidgetService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>

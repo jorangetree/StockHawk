@@ -1,4 +1,4 @@
-package com.udacity.stockhawk;
+package com.udacity.stockhawk.ui.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.preference.PreferenceManager;
 import android.widget.RemoteViews;
 
+import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.DataRepresentationFormat;
 import com.udacity.stockhawk.sync.QuoteIntentService;
@@ -20,7 +21,7 @@ import java.text.DecimalFormat;
 /**
  * Implementation of App Widget functionality.
  */
-public class StockHawkWidget extends AppWidgetProvider {
+public class StockHawkInfoWidget extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -38,7 +39,7 @@ public class StockHawkWidget extends AppWidgetProvider {
     }
 
     private void updateWidgets(final Context context) {
-        ComponentName thisWidget = new ComponentName(context, StockHawkWidget.class);
+        ComponentName thisWidget = new ComponentName(context, StockHawkInfoWidget.class);
         final AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         int[] widgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
 
