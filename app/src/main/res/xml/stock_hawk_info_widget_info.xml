@@ -5,6 +5,6 @@
     android:initialLayout="@layout/list_item_quote"
     android:minHeight="40dp"
     android:minWidth="250dp"
-    android:previewImage="@drawable/example_appwidget_preview"
+    android:previewImage="@drawable/info_widget"
     android:updatePeriodMillis="1800000"
     android:widgetCategory="home_screen" />
